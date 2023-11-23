@@ -1,11 +1,16 @@
 import { useState } from "react";
 
-const ListGroup = () => {
+interface ListGroupProps {
+  items: string[];
+  heading: string;
+}
+
+const ListGroup = ({ items, heading }: ListGroupProps) => {
   //! Typescript Syntax For Declaring Arrays
-  let cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"];
+  /*   let cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"]; */
 
   //! Hooks
-  let [selectedIndex, setSelectedIndex] = useState(0);
+  let [selectedIndex, setSelectedIndex] = useState(-1);
 
   //! Event Handlers
   const selectHandler = (index: number) => {
@@ -19,24 +24,25 @@ const ListGroup = () => {
     //! Use Fragments When You Are Using Multiple Elements (<> Elements </>)
     //! You Can Also Use Div But It Will Add Extra Div In Your DOM
     <>
-      <h1>Cities</h1>
+      <h1 className="bg-success p-4 text-white my-4 text-center">{heading}</h1>
+
       {/* Short Circuiting  */}
-      {cities.length === 0 && noItemsFoundMessage}
+      {items.length === 0 && noItemsFoundMessage}
       <ul className="list-group">
         {/* Dynamic Rendering ListGroup */}
-        {cities.map((city, index) => (
+        {items.map((item, index) => (
           <li
             className={
               selectedIndex === index
                 ? "list-group-item active"
-                : "list-group-item"
+                : "list-group-item list-group-item-info"
             }
-            key={city}
+            key={item}
             onClick={() => {
               selectHandler(index);
             }}
           >
-            {city}
+            {item}
           </li>
         ))}
       </ul>
