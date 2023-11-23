@@ -1,3 +1,4 @@
+import Alert from "./Components/Alert";
 import ListGroup from "./Components/ListGroup";
 
 const App = () => {
@@ -10,23 +11,31 @@ const App = () => {
     console.log(item);
   };
   return (
-    <div>
-      <ListGroup
-        items={cities}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
-      <ListGroup
-        items={colors}
-        heading="Colors"
-        onSelectItem={handleSelectItem}
-      />
-      <ListGroup
-        items={animals}
-        heading="Animals"
-        onSelectItem={handleSelectItem}
-      />
-    </div>
+    <>
+      <Alert>
+        Hello World From <span className="text-danger">I Am Span</span> 1
+      </Alert>
+      <Alert>
+        Hello I Am <span className="text-danger">Children</span> Component 2
+      </Alert>
+      <div>
+        <ListGroup
+          items={cities}
+          heading="Cities"
+          onSelectItem={handleSelectItem}
+        />
+        <ListGroup
+          items={colors}
+          heading="Colors"
+          onSelectItem={handleSelectItem}
+        />
+        <ListGroup
+          items={animals}
+          heading="Animals"
+          onSelectItem={handleSelectItem}
+        />
+      </div>
+    </>
   );
 };
 
