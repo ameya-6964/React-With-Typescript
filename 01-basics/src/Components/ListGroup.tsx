@@ -3,9 +3,10 @@ import { useState } from "react";
 interface ListGroupProps {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-const ListGroup = ({ items, heading }: ListGroupProps) => {
+const ListGroup = ({ items, heading, onSelectItem }: ListGroupProps) => {
   //! Typescript Syntax For Declaring Arrays
   /*   let cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"]; */
 
@@ -40,6 +41,7 @@ const ListGroup = ({ items, heading }: ListGroupProps) => {
             key={item}
             onClick={() => {
               selectHandler(index);
+              onSelectItem(item);
             }}
           >
             {item}
