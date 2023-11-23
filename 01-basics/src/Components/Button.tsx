@@ -5,7 +5,7 @@ interface ButtonProp {
   //! This is Called Union Operator
   color?: "primary" | "secondary" | "danger" | "warning" | "success";
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = ({ children, onClick, color = "primary" }: ButtonProp) => {

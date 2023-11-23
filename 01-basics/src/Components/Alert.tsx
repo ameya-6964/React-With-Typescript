@@ -2,9 +2,10 @@ import { ReactNode } from "react";
 
 interface AlertProps {
   children: ReactNode;
+  onClose: () => void;
 }
 
-const Alert = ({ children }: AlertProps) => {
+const Alert = ({ children, onClose }: AlertProps) => {
   return (
     <div className="alert alert-info alert-dismissible fade show" role="alert">
       <strong>{children}</strong> You should check in on some of those fields
@@ -14,6 +15,7 @@ const Alert = ({ children }: AlertProps) => {
         className="btn-close"
         data-bs-dismiss="alert"
         aria-label="Close"
+        onClick={onClose}
       ></button>
     </div>
   );
