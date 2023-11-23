@@ -1,4 +1,5 @@
 import Alert from "./Components/Alert";
+import Button from "./Components/Button";
 import ListGroup from "./Components/ListGroup";
 
 const App = () => {
@@ -12,29 +13,45 @@ const App = () => {
   };
   return (
     <>
-      <Alert>
-        Hello World From <span className="text-danger">I Am Span</span> 1
-      </Alert>
-      <Alert>
-        Hello I Am <span className="text-danger">Children</span> Component 2
-      </Alert>
-      <div>
-        <ListGroup
-          items={cities}
-          heading="Cities"
-          onSelectItem={handleSelectItem}
-        />
-        <ListGroup
-          items={colors}
-          heading="Colors"
-          onSelectItem={handleSelectItem}
-        />
-        <ListGroup
-          items={animals}
-          heading="Animals"
-          onSelectItem={handleSelectItem}
-        />
-      </div>
+      <Button
+        onClick={() => {
+          console.log(`Clicked`);
+        }}
+        color="secondary"
+      >
+        Hello World
+      </Button>
+      <Button
+        onClick={() => {
+          console.log(`Clicked`);
+        }}
+        color="warning"
+      >
+        Hello World
+      </Button>
+      <Button
+        onClick={() => {
+          console.log(`Clicked`);
+        }}
+        color="success"
+      >
+        Hello World
+      </Button>
+      <Button
+        onClick={() => {
+          console.log(`Clicked`);
+        }}
+        color="danger"
+      >
+        Hello World
+      </Button>
+      <Button
+        onClick={() => {
+          console.log(`Clicked`);
+        }}
+      >
+        I Dont Have Color Prop Passed
+      </Button>
     </>
   );
 };
