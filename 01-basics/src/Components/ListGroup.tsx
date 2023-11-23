@@ -1,15 +1,16 @@
-import { MouseEvent } from "react";
+import { useState } from "react";
 
 const ListGroup = () => {
   //! Typescript Syntax For Declaring Arrays
   let cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"];
 
-  //! Event Handlers
-  const clickHandler = (item: string, index: number, e: MouseEvent) => {
-    console.log("Clicked", item, index);
-    console.log(e);
-  };
+  //! Hooks
+  let [selectedIndex, setSelectedIndex] = useState(0);
 
+  //! Event Handlers
+  const selectHandler = (index: number) => {
+    setSelectedIndex(index);
+  };
   const noItemsFoundMessage = (
     <h1 className="text-muted text-center my-4"> No Items Found</h1>
   );
@@ -25,9 +26,15 @@ const ListGroup = () => {
         {/* Dynamic Rendering ListGroup */}
         {cities.map((city, index) => (
           <li
-            className="list-group-item"
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
             key={city}
-            onClick={(e) => clickHandler(city, index, e)}
+            onClick={() => {
+              selectHandler(index);
+            }}
           >
             {city}
           </li>
