@@ -1,7 +1,14 @@
+import { MouseEvent } from "react";
+
 const ListGroup = () => {
   //! Typescript Syntax For Declaring Arrays
   let cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"];
-  //cities = [];
+
+  //! Event Handlers
+  const clickHandler = (item: string, index: number, e: MouseEvent) => {
+    console.log("Clicked", item, index);
+    console.log(e);
+  };
 
   const noItemsFoundMessage = (
     <h1 className="text-muted text-center my-4"> No Items Found</h1>
@@ -16,8 +23,12 @@ const ListGroup = () => {
       {cities.length === 0 && noItemsFoundMessage}
       <ul className="list-group">
         {/* Dynamic Rendering ListGroup */}
-        {cities.map((city) => (
-          <li key={city} className="list-group-item">
+        {cities.map((city, index) => (
+          <li
+            className="list-group-item"
+            key={city}
+            onClick={(e) => clickHandler(city, index, e)}
+          >
             {city}
           </li>
         ))}
