@@ -1,15 +1,18 @@
 const ListGroup = () => {
+  //! Typescript Syntax For Declaring Arrays
+  const cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"];
   return (
     //! Use Fragments When You Are Using Multiple Elements (<> Elements </>)
     //! You Can Also Use Div But It Will Add Extra Div In Your DOM
     <>
       <h1>List</h1>
       <ul className="list-group">
-        <li className="list-group-item">An item</li>
-        <li className="list-group-item">A second item</li>
-        <li className="list-group-item">A third item</li>
-        <li className="list-group-item">A fourth item</li>
-        <li className="list-group-item">And a fifth one</li>
+        {/* Dynamic Rendering ListGroup */}
+        {cities.map((city) => (
+          <li key={city} className="list-group-item">
+            {city}
+          </li>
+        ))}
       </ul>
     </>
   );
