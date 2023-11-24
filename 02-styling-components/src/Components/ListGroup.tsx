@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/ListGroup.css";
+import styles from "./styles/ListGroup.module.css";
 
 interface ListGroupProps {
   items: string[];
@@ -30,7 +30,7 @@ const ListGroup = ({ items, heading, onSelectItem }: ListGroupProps) => {
 
       {/* Short Circuiting  */}
       {items.length === 0 && noItemsFoundMessage}
-      <ul className="list-group">
+      <ul className={styles.listGroup}>
         {/* Dynamic Rendering ListGroup */}
         {items.map((item, index) => (
           <li
