@@ -1,3 +1,4 @@
+import Button from "./Components/Button";
 import ListGroup from "./Components/ListGroup";
 
 const App = () => {
@@ -9,11 +10,7 @@ const App = () => {
 
   return (
     <>
-      <ListGroup
-        items={colors}
-        heading="Cities"
-        onSelectItem={handleSelectItem}
-      />
+      <Button> My Button </Button>
     </>
   );
 };

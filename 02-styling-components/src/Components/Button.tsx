@@ -1,19 +1,18 @@
 import { ReactNode } from "react";
+import styles from "./styles/Button.module.css";
 
 interface ButtonProp {
   // color?: string;
   //! This is Called Union Operator
-  color?: "primary" | "secondary" | "danger" | "warning" | "success";
+  // color?: "primary" | "secondary" | "danger" | "warning" | "success";
   children: ReactNode;
-  onClick?: () => void;
+  //onClick?: () => void;
 }
 
-const Button = ({ children, onClick, color = "primary" }: ButtonProp) => {
+const Button = ({ children }: ButtonProp) => {
   return (
     <div>
-      <button className={`btn btn-${color}`} onClick={onClick}>
-        {children}
-      </button>
+      <button className={styles.button}>{children}</button>
     </div>
   );
 };
