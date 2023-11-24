@@ -1,5 +1,18 @@
 import { useState } from "react";
-import styles from "./styles/ListGroup.module.css";
+import "./styles/ListGroup.css";
+import styled from "styled-components";
+
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  background: yellow;
+`;
+
+const ListItem = styled.li<ListItemProps>`
+  padding: 10px 0;
+  border: 1px solid red;
+  background: ${({ active }) => (active ? "blue" : "null")};
+`;
 
 interface ListGroupProps {
   items: string[];
@@ -7,12 +20,16 @@ interface ListGroupProps {
   onSelectItem: (item: string) => void;
 }
 
+interface ListItemProps {
+  active: boolean;
+}
+
 const ListGroup = ({ items, heading, onSelectItem }: ListGroupProps) => {
   //! Typescript Syntax For Declaring Arrays
   /*   let cities: string[] = ["Maharashtra", "Goa", "Lucknow", "Delhi", "Punjab"]; */
 
   //! Hooks
-  let [selectedIndex, setSelectedIndex] = useState(-1);
+  let [selectedIndex, setSelectedIndex] = useState(0);
 
   //! Event Handlers
   const selectHandler = (index: number) => {
@@ -30,15 +47,11 @@ const ListGroup = ({ items, heading, onSelectItem }: ListGroupProps) => {
 
       {/* Short Circuiting  */}
       {items.length === 0 && noItemsFoundMessage}
-      <ul className={[styles.listGroup, styles.container].join(" ")}>
+      <List>
         {/* Dynamic Rendering ListGroup */}
         {items.map((item, index) => (
-          <li
-            className={
-              selectedIndex === index
-                ? "list-group-item active"
-                : "list-group-item list-group-item-info"
-            }
+          <ListItem
+            active={index === selectedIndex}
             key={item}
             onClick={() => {
               selectHandler(index);
@@ -46,9 +59,9 @@ const ListGroup = ({ items, heading, onSelectItem }: ListGroupProps) => {
             }}
           >
             {item}
-          </li>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   );
 };
