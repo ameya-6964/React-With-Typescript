@@ -30,7 +30,7 @@ const ListGroup = ({ items, heading, onSelectItem }: ListGroupProps) => {
 
       {/* Short Circuiting  */}
       {items.length === 0 && noItemsFoundMessage}
-      <ul className={styles.listGroup}>
+      <ul className={[styles.listGroup, styles.container].join(" ")}>
         {/* Dynamic Rendering ListGroup */}
         {items.map((item, index) => (
           <li
