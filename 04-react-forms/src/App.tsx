@@ -1,9 +1,10 @@
 import Forms from "./components/Forms";
 import FormsUseState from "./components/FormsUseState";
 import ReactHookForm from "./components/ReactHookForm";
+import ZodValidation from "./components/ZodValidation";
 
 function App() {
-  return <ReactHookForm />;
+  return <ZodValidation />;
 }
 
 export default App;
